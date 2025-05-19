@@ -5,14 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beach House Cabañas</title>
+  <!--link rel="stylesheet" href="css/carrito.css" -->
   <link rel="stylesheet" href="assets/styles.css">
+  <script src="js/jquery.3.7.js"></script>
+  <!--script src="js/carrito.js"></script-->
+  <script>
+    $( document ).ready(function() {
+      $(".frm_reg").on("submit", function (e) {
+        console.log(e);
+      });
+        console.log( "ready!" );
+    });
+  </script>
 </head>
 
 <body>
 
   <div class="header">
     <img src="Images/logo.png" alt="Logo de Beach House Cabañas" class="logo">
-    <h1>BEACH HOUSE CABAÑAS SANTA ELENA</h1>
+    
+<?php
+echo '<h1>BEACH HOUSE CABAÑAS SANTA ELENA</h1>';
+?>
+
   </div>
   <div class="botones-cabanas">
     <button class="boton-cabana" id="btnCurazao">Cabaña Familiar</button>
@@ -23,7 +38,7 @@
     <button class="boton-cabana" id="btnMapa">Mapa del Sitio</button>
     <button class="boton-cabana" id="btnContacto">Contacto</button>
     <button class="boton-cabana" id="btnGaleria">Galeria</button>
-    <button class="boton-cabana" id="btnPreguntas">Preguntas</button>
+    <button class="boton-cabana btn_preg" id="btnPreguntas"  formaction="/tienda">Tienda</button>
   </div>
 
   
@@ -171,38 +186,57 @@
   <img src="Images/Images General/ext3.avif" alt="">
   <img src="Images/Cabaña Bonaire/jacuzzy2.webp" alt="">
 
+
 </div>
 <div id="descripcionPreguntas" class="descripcion-cabana" style="display:none;">
-  <h2>PREGUNTAS FRECUENTES</h2>
-  <p>Algunas dudas comunes que recibimos:</p>
+<h1>Carrito de Compras</h1>
 
-  <table class="tabla-tarifas">
+  <section id="productos">
+    <h2>Productos</h2>
+    <div class="producto" data-nombre="Cerveza" data-precio="5000">Cerveza - $5.000 <button class="btn_car">Agregar</button></div>
+    <div class="producto" data-nombre="Ron" data-precio="60000">Ron - $60.000 <button class="btn_car">Agregar</button></div>
+    <div class="producto" data-nombre="Maní" data-precio="6000">Maní - $6.000 <button class="btn_car">Agregar</button></div>
+    <div class="producto" data-nombre="Condones" data-precio="24000">Condones - $24.000 <button class="btn_car">Agregar</button></div>
+    <div class="producto" data-nombre="Gaseosa" data-precio="4000">Gaseosa - $4.000 <button class="btn_car">Agregar</button></div>
+    <div class="producto" data-nombre="Chocolates" data-precio="12000">Chocolates - $12.000 <button class="btn_car">Agregar</button></div>
+    <div class="producto" data-nombre="Salchichas" data-precio="8000">Salchichas - $8.000 <button class="btn_car">Agregar</button></div>
+  </section>
+
+  <section id="carrito">
+    <h2>Tu Carrito</h2>
+    <div id="lista-carrito">
+  <table>
     <thead>
       <tr>
-        <th>Pregunta</th>
-        <th>Respuesta</th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Eliminar</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>¿Se admiten mascotas?</td>
-        <td>Sí, con aviso previo y bajo ciertas condiciones.</td>
-      </tr>
-      <tr>
-        <td>¿Hay estacionamiento?</td>
-        <td>Sí, contamos con estacionamiento privado para huéspedes, gratis y monitoreado por camaras</td>
-      </tr>
-      <tr>
-        <td>¿Qué formas de pago aceptan?</td>
-        <td>Transferencia bancaria y pagos en efectivo.</td>
-      </tr>
-      <tr>
-        <td>Se puede usar el bar?</td>
-        <td>si, el consumo se carga a la cabaña</td>
-      </tr>
+    <tbody id="carrito-body">
+      <!-- Aquí JS insertará las filas -->
     </tbody>
   </table>
 </div>
+
+    <p>Total: <span id="total">0.00</span></p>
+  </section>
+
+  <section id="pago">
+    <h2>Método de Pago</h2>
+    <label><input type="radio" name="pago" value="tarjeta" checked> Tarjeta</label>
+    <label><input type="radio" name="pago" value="efectivo"> Efectivo</label>
+    <button id="finalizar">Finalizar Compra</button>
+  </section>
+
+
+
+
+  
+    
+
+
 </div>
 
 
@@ -287,32 +321,35 @@
   </div>
 
   <div>
-    <form action="">
+    <form class="frm_reg">
       <p>
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre">
-      </p>
-      <p>
+
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido">
+
+        <label for="cedula">Cédula</label>
+        <input type="text" name="cedula">
+
+        <label for="telefono">Telefono</label>
+        <input type="text" name="telefono" id="">
+
         <label for="email">Email</label>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="email"> 
+
+              <label for="mensaje">Mensaje</label>
+        <textarea name="mensaje" id="mensajes"></textarea>       
       </p>
-      <p>
-        <label for="mensaje">Mensaje</label>
-        <textarea name="mensaje" id="mensajes"></textarea>
-      </p>
-      <p>
-        
+     
+      <div style="text-align: center;">
         <button type="submit">Enviar</button>
-      </p>
+      </div>     
+      
     </form>
   </div>
 
-  <div class="reserva-contenedor">
-    <a href="https://es-l.airbnb.com/rooms/682626373966189711?guests=1&adults=1&s=67&unique_share_id=c2f714de-3ceb-42c9-8cf2-73f5528f8026"
-      target="_blank" class="boton-reserva">
-      Quiero Reservar
-    </a>
-  </div>
+
 
   <hr>
 
@@ -342,6 +379,81 @@
         }
       });
     });
+    /**------------------------------------------------------------------------------------------------ */
+  const botonesAgregar = document.querySelectorAll('.btn_car');
+  const carritoBody = document.getElementById('carrito-body');
+  const totalSpan = document.getElementById('total');
+  const finalizarBtn = document.getElementById('finalizar');
+
+  let carrito = [];
+
+  botonesAgregar.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const productoDiv = boton.parentElement;
+      const nombre = productoDiv.getAttribute('data-nombre');
+      const precio = parseFloat(productoDiv.getAttribute('data-precio'));
+
+      const productoExistente = carrito.find(p => p.nombre === nombre);
+      if (productoExistente) {
+        productoExistente.cantidad++;
+      } else {
+        carrito.push({ nombre, precio, cantidad: 1 });
+      }
+
+      actualizarCarrito();
+    });
+  });
+
+  function actualizarCarrito() {
+    carritoBody.innerHTML = '';
+    let total = 0;
+
+    carrito.forEach((producto, index) => {
+      const fila = document.createElement('tr');
+
+      const tdNombre = document.createElement('td');
+      tdNombre.textContent = producto.nombre;
+
+      const tdPrecio = document.createElement('td');
+      tdPrecio.textContent = '$' + (producto.precio).toLocaleString();
+
+      const tdCantidad = document.createElement('td');
+      tdCantidad.textContent = producto.cantidad;
+
+      const tdEliminar = document.createElement('td');
+      const btnEliminar = document.createElement('button');
+      btnEliminar.textContent = 'Eliminar';
+      btnEliminar.addEventListener('click', () => {
+        carrito.splice(index, 1);
+        actualizarCarrito();
+      });
+      tdEliminar.appendChild(btnEliminar);
+
+      fila.appendChild(tdNombre);
+      fila.appendChild(tdPrecio);
+      fila.appendChild(tdCantidad);
+      fila.appendChild(tdEliminar);
+
+      carritoBody.appendChild(fila);
+
+      total += producto.precio * producto.cantidad;
+    });
+
+    totalSpan.textContent = total.toLocaleString();
+  }
+
+  finalizarBtn.addEventListener('click', () => {
+    if (carrito.length === 0) {
+      alert('Tu carrito está vacío.');
+      return;
+    }
+
+    const metodoPago = document.querySelector('input[name="pago"]:checked').value;
+
+    alert(`Gracias por tu compra.\nMétodo de pago: ${metodoPago.toUpperCase()}.\nTotal: $${totalSpan.textContent}`);
+    carrito = [];
+    actualizarCarrito();
+  });
   </script>
 
 </body>
